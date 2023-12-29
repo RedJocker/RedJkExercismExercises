@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>README.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+</head>
+
+<body>
+
+<h1 id="palpicker">Pal Picker</h1>
+
+<p>Welcome to Pal Picker on Exercism&#8217;s Common Lisp Track.
+If you need help running the tests or submitting your code, check out <code>HELP.md</code>.
+If you get stuck on the exercise, check out <code>HINTS.md</code>, but try and solve it without using those first :)</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<h2 id="truthyandfalsy">Truthy And Falsy</h2>
+
+<p>In Common Lisp all values are &#8220;true&#8221; except for <code>()</code> which is &#8220;false&#8221;.
+There are two special constant symbols <code>t</code> and <code>nil</code> whose values are true and false respectively.</p>
+
+<h2 id="conditionals">Conditionals</h2>
+
+<p>Common lisp provides several different conditional expressions, the main difference being the number of branches they support.</p>
+
+<ul>
+<li><code>when</code> and <code>unless</code> allow for a single branch:</li>
+</ul>
+
+<pre><code class="lisp">(when (= 2 2) &quot;All is well&quot;)      ; =&gt; &quot;All is well&quot;
+(unless (= 2 2) &quot;Time to panic!&quot;) ; =&gt; NIL
+</code></pre>
+
+<p>The section after the test expression may be more than one expression.</p>
+
+<ul>
+<li><code>if</code> provides the classic if-then-else construct:</li>
+</ul>
+
+<pre><code class="lisp">(if (= 2 2) 'how-honest 'you-liar) ; =&gt; HOW-HONEST
+</code></pre>
+
+<p>Note that both the then and else clauses can only be a single expression.</p>
+
+<ul>
+<li><code>cond</code> provides a way to have multiple branches without nesting <code>if</code> expressions:</li>
+</ul>
+
+<pre><code class="lisp">(cond ((= 0 2) 'nope)
+      ((= 1 2) 'try-again)
+      ((= 2 2) 'quite-true)
+      ((= 3 2) 'too-far)
+      (t 'something-else))
+; =&gt; QUITE-TRUE
+</code></pre>
+
+<p>Note that there is no limit to the number of expressions after the test expression.</p>
+
+<ul>
+<li><code>case</code> provides a classic &#8216;switch&#8217; style construct: It checks a single value against a number of branches:</li>
+</ul>
+
+<pre><code class="lisp">(case 'elder-beast
+  (cat &quot;Meow&quot;)
+  (bird &quot;Chirp&quot;)
+  (dog &quot;Bark&quot;)
+  (otherwise &quot;???&quot;))
+; =&gt; &quot;???&quot;
+</code></pre>
+
+<p>Note that like <code>cond</code> there is no limit to the number of expressions after the test expression.</p>
+
+<h2 id="instructions">Instructions</h2>
+
+<p>When the Lisp aliens first came to Earth, they encountered countless weird and
+wonderful things, but one of their favorite discoveries was that of
+&#8220;pets&#8221;. Let&#8217;s be honest, what sort of alien wouldn&#8217;t gush over a puppy or
+kitten?</p>
+
+<p>Ludwig, after their recent holiday to Earth, has decided they want a pet of their
+own! The only issue? Far too many choices! Perhaps you could write a program to
+help Ludwig find and care for their next cuddly friend?</p>
+
+<h2 id="1.pickingapal">1. Picking a Pal</h2>
+
+<p>Though Ludwig is set on getting a pet, that&#8217;s about as far as they&#8217;ve gotten in
+thinking things through. The first step, then, is deciding what sort of pet to
+get!</p>
+
+<p>Ludwig wants to find a pal with a personality that complements their own. Could
+you write Ludwig a function called <code>pal-picker</code> that takes some personality
+trait (a keyword) and returns the type of pet (a string) with the given trait?</p>
+
+<p>In this particular case:</p>
+
+<ul>
+<li><code>:lazy</code> -&gt; <code>&quot;Cat&quot;</code></li>
+<li><code>:energetic</code> -&gt; <code>&quot;Dog&quot;</code></li>
+<li><code>:quiet</code> -&gt; <code>&quot;Fish&quot;</code></li>
+<li><code>:hungry</code> -&gt; <code>&quot;Rabbit&quot;</code></li>
+<li><code>:talkative</code> -&gt; <code>&quot;Bird&quot;</code></li>
+</ul>
+
+<p>For other, unknown personalities, your function should evaluate to: <code>&quot;I don't know... A dragon?&quot;</code></p>
+
+<pre><code class="lisp">(pal-picker :quiet) ; =&gt; &quot;Fish&quot;
+</code></pre>
+
+<h2 id="2.intheirnaturalhabitat">2. In Their Natural Habitat</h2>
+
+<p>Now that Ludwig has a new friend, they&#8217;ll need a place to stay! Can you help
+Ludwig select the right size bed / tank / cage for their pet?</p>
+
+<p>Here, Ludwig needs a function called <code>habitat-fitter</code> for selecting the proper
+habitat size (a keyword) from their pet&#8217;s weight in kilograms (a integer).</p>
+
+<p>The habitats needed by each size pet are:</p>
+
+<ul>
+<li>More than or equal to 40kg -&gt; <code>:massive</code></li>
+<li>20kg to 39kg inclusive -&gt; <code>:large</code></li>
+<li>10kg to 19kg inclusive -&gt; <code>:medium</code></li>
+<li>1kg to 9kg inclusive -&gt; <code>:small</code></li>
+<li>Less than or equal to 0kg -&gt; <code>:just-your-imagination</code></li>
+</ul>
+
+<pre><code class="lisp">(habitat-fitter 42) ; =&gt; :MASSIVE
+</code></pre>
+
+<h2 id="3.andnowwefeast">3. And Now, We Feast</h2>
+
+<p>One thing all earthling pets have in common is their need for food! This concept
+is somewhat alien to Ludwig, however, as they are prone to forgetting to refill their
+pet&#8217;s food-bowl.</p>
+
+<p>Ludwig could use a simple function called <code>feeding-time-p</code> to alert them when the
+bowl needs refilling. The function would take a percent fullness (an integer)
+and return a message in the form of a string.</p>
+
+<p>If the food level is:</p>
+
+<ul>
+<li>Above 20% -&gt; <code>&quot;All is well.&quot;</code></li>
+<li>20% or below -&gt; <code>&quot;It's feeding time!&quot;</code></li>
+</ul>
+
+<pre><code class="lisp">(feeding-time-p 15) ; =&gt; &quot;It's feeding time!&quot;
+</code></pre>
+
+<h2 id="4.acodeofconduct">4. A Code of Conduct</h2>
+
+<p>With all of the basics sorted, Ludwig is looking forward to trying out a number
+of exciting things like &#8220;petting&#8221; and playing &#8220;fetch&#8221;. With that being said, not
+every pet is suitable for these activities.</p>
+
+<p>Ludwig would like a pair of functions – <code>pet</code> and <code>play-fetch</code> – that take the
+type of pet (as a string) and return either nothing or a message like: <code>&quot;Maybe not with this pet...&quot;</code> if the action is unfitting.</p>
+
+<p>Assume that only <code>&quot;Dog&quot;</code>s will play fetch and that all pets except <code>&quot;Fish&quot;</code> can
+be pet.</p>
+
+<pre><code class="lisp">(pet &quot;Dog&quot;)         ; =&gt; NIL
+(play-fetch &quot;Fish&quot;) ; =&gt; &quot;Maybe not with this pet...&quot;
+</code></pre>
+
+<h2 id="source">Source</h2>
+
+<h3 id="createdby">Created by</h3>
+
+<ul>
+<li>@TheLostLambda</li>
+</ul>
+
+</body>
+</html>
