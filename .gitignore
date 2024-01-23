@@ -30,4 +30,5 @@ clojure/**/target/**
 **/bin
 **/obj
 **/*.fasl
+**/__pycache__/**
 	  
