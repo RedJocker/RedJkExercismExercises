@@ -31,4 +31,5 @@ clojure/**/target/**
 **/obj
 **/*.fasl
 **/__pycache__/**
-	  
+**/CMakeFiles/**
+CMakeCache.txt
