@@ -33,3 +33,6 @@ clojure/**/target/**
 **/__pycache__/**
 **/CMakeFiles/**
 CMakeCache.txt
+.Rproj.user
+.Rhistory
+*.Rproj
