@@ -1,14 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Hamming.fs" />
-    <Compile Include="HammingTests.fs" />
+    <Compile Include="ValentinesDay.fs" />
+    <Compile Include="ValentinesDayTests.fs" />
   </ItemGroup>
 
   <ItemGroup>
