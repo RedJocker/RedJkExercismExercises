@@ -36,3 +36,4 @@ CMakeCache.txt
 .Rproj.user
 .Rhistory
 *.Rproj
+**/elm-stuff
