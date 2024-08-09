@@ -37,5 +37,7 @@ CMakeCache.txt
 .Rhistory
 *.Rproj
 **/elm-stuff
-
+**/TAGS
+**/.yarn
 **/*dSYM*
+**/.pnp.*
