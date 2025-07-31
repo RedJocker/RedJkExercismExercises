@@ -1,0 +1,46 @@
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. LEAP.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+
+       WORKING-STORAGE SECTION.
+       01 WS-YEAR PIC 9(10) VALUE ZEROS.
+       01 WS-RESULT PIC 9 VALUE ZEROS.
+
+       01 WS-DIV PIC 9(10) VALUE ZEROS.
+       01 WS-REM-400 PIC 9(10) VALUE ZEROS.
+       01 WS-REM-100 PIC 9(10) VALUE ZEROS.
+       01 WS-REM-4 PIC 9(10) VALUE ZEROS.
+       
+       PROCEDURE DIVISION.
+
+       LEAP.
+           DIVIDE WS-YEAR BY 400 GIVING WS-DIV REMAINDER WS-REM-400
+           IF WS-REM-400 EQUAL TO 0 THEN
+               PERFORM RET-TRUE
+               EXIT PARAGRAPH
+           END-IF
+           
+           DIVIDE WS-YEAR BY 100 GIVING WS-DIV REMAINDER WS-REM-100
+           IF WS-REM-100 EQUAL TO 0 THEN
+               PERFORM RET-FALSE
+               EXIT PARAGRAPH
+           END-IF
+           
+           DIVIDE WS-YEAR BY 4 GIVING WS-DIV REMAINDER WS-REM-4
+           IF WS-REM-4 EQUAL TO 0 THEN
+               PERFORM RET-TRUE
+               EXIT PARAGRAPH
+           END-IF.
+
+        LEAP-EXIT.
+            EXIT.
+
+        RET-TRUE.
+            MOVE 1 TO WS-RESULT
+            EXIT.
+
+        RET-FALSE.
+            MOVE 0 TO WS-RESULT
+            EXIT.
